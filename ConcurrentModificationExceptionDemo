@@ -1,4 +1,7 @@
-List<String> progLangList = new ArrayList<>();
+public class ConcurrentModification {
+
+	public static void main(String[] args) {
+	List<String> progLangList = new ArrayList<>();
 		progLangList.add("Java");
 		progLangList.add("Javascript");
 		progLangList.add(".NET");
@@ -25,4 +28,6 @@ List<String> progLangList = new ArrayList<>();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+		}
 		}
