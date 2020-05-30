@@ -1,0 +1,28 @@
+List<String> progLangList = new ArrayList<>();
+		progLangList.add("Java");
+		progLangList.add("Javascript");
+		progLangList.add(".NET");
+		progLangList.add("Python");
+		
+		try {
+			//Code demonstrating avoiding ConcurrentModificationException
+			System.out.println("List before : " + progLangList);
+			for (int i = 0; i < progLangList.size(); i++) {
+				String book = progLangList.get(i);
+				if (book.contains("Python")) {
+					System.out.println("Removing " + book);
+					progLangList.remove(i);
+				}
+			}
+			System.out.println("List after : " + progLangList);
+
+			
+			//Code demonstrating ConcurrentModificationException
+			for (String book : progLangList) {
+				if (book.contains("Java")) {
+					progLangList.remove(book);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}

@@ -1,0 +1,51 @@
+import java.util.Stack;
+
+public class MinStackMain {
+
+	private Stack<Integer> finalStack;
+	private Stack<Integer> minStack;
+
+	public MinStackMain() {
+		finalStack = new Stack<>();
+		minStack = new Stack<>();
+	}
+
+	public void push(int input) {
+
+		int min = input;
+		if (!minStack.isEmpty() && min > minStack.peek()) {
+			min = minStack.peek();
+		}
+		finalStack.push(input);
+		minStack.push(min);
+	}
+
+	public void pop() {
+		finalStack.pop();
+		minStack.pop();
+	}
+
+	public int top() {
+		return finalStack.peek();
+	}
+
+	public int getMinElement() {
+		return minStack.peek();
+	}
+
+	public static void main(String[] args) {
+
+		MinStackMain minElementDemo = new MinStackMain();
+
+		minElementDemo.push(32);
+		minElementDemo.push(9);
+		minElementDemo.push(8);
+		minElementDemo.pop();
+		minElementDemo.push(12);
+		minElementDemo.push(3);
+		minElementDemo.push(98);
+		minElementDemo.pop();
+
+		System.out.println("minimum element at this moment is:" + minElementDemo.getMinElement());
+	}
+}

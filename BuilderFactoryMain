@@ -1,0 +1,53 @@
+public class BuilderFactoryMain {
+
+	public static void main(String[] args) {
+		Student student =BuilderManager.newBuilder().setId("1").setName("Test").build(); 
+		System.out.println(student);
+		
+		Student student1 = BuilderManager.newBuilder().setId("11").setName("Test1").build(); 
+		System.out.println(student1);
+	}
+	static class BuilderManager{
+		
+		private  String id ;
+		private  String name;
+		public BuilderManager setId(String id) {
+			this.id=id;
+			return this;
+		}
+		public static BuilderManager newBuilder() {
+		
+			return new BuilderManager();
+		}
+		public  BuilderManager setName(String name) {
+			this.name=name;
+			return this;
+		}
+		
+		
+		public Student build(){
+			Student student= new Student();
+			student.id=this.id;
+			student.name=this.name;
+			return student;
+		}
+		
+	
+		
+		
+	}
+	
+	static class Student{
+		private String id ;
+		private String name;
+		
+		public Student() {
+			
+		}
+		
+		@Override
+		public String toString() {
+			return this.id+" "+this.name;
+		}
+	}
+}
